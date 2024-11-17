@@ -1,0 +1,22 @@
+{$DOMAIN}
+
+log {
+	level INFO
+	output file {$LOG_FILE} {
+		roll_size 10MB
+		roll_keep 10
+	}
+}
+
+#	 encode gzip
+
+@static path /images/* /media/* /public/*
+
+route {
+	# Serve static files
+	file_server @static {
+		root /var/www
+	}
+	# Proxy everything else to ghost
+	reverse_proxy ghost:2368
+}

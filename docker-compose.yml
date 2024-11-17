@@ -1,0 +1,54 @@
+services:
+
+  ghost:
+    image: ghost:latest
+    restart: always
+    depends_on:
+      - db
+    environment:
+      url: ${URL}
+      database__connection__password: ${MYSQL_USER_PASSWORD}
+      mail__from: ${EMAIL_ADDRESS}
+      mail__options__service: ${EMAIL_SERVICE}
+      mail__options__host: ${EMAIL_HOST}
+      mail__options__port: ${EMAIL_PORT}
+      mail__options__auth__user: ${EMAIL_USER}
+      mail__options__auth__pass: ${EMAIL_PASSWORD}
+    volumes:
+        - ./config.production.json:/var/lib/ghost/config.production.json:ro
+        - ./content:/var/lib/ghost/content
+        
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+      MYSQL_DATABASE: ghost
+    volumes:
+      - ./mysql:/var/lib/mysql
+
+  proxy:
+    image: caddy:2
+    restart: always
+    depends_on:
+      - ghost
+    ports:
+      - ${HTTP_PORT:-80}:${HTTP_PORT:-80}
+      - ${HTTPS_PORT:-443}:${HTTPS_PORT:-443}
+    volumes:
+      - caddy_conf:/config
+      - caddy_data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./content:/var/www
+    environment:
+      DOMAIN: ${URL}
+      EMAIL: ${EMAIL_ADDRESS}
+      LOG_FILE: /data/access.log
+
+volumes:
+  caddy_conf:
+    name: "caddy_config"
+  caddy_data:
+    name: "caddy_data"

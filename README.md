@@ -19,8 +19,6 @@ TODO
 - MySQL
 
 ## TODO
-- Test new instance
-- Configure email for Rackspace, AWS SES
 - make/configure instructions/script/howto
 - Publish to Github with license
 
@@ -31,3 +29,5 @@ TODO
 - Cleanup
 - Dev instance where SSL is optional: use URL as http instead of https
 - Handle unprivileged ports (e.g. 8080) on Caddy: set HTTP\_PORT or HTTPS\_PORT
+- Test new instance
+- Configure email for AWS SES

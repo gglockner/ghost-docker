@@ -45,5 +45,5 @@ This runs 3 services using the official Docker images:
 ### Configuration for local development
 
 By default, Caddy will use Let's Encrypt to create and update a SSL certificate.
-However, this can be an issue if you are running on a local system that is
+However, this can be an issue if you are running on a local test system that is
 not exposed to the internet. In this case, use http in the URL field.

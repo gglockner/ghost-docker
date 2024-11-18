@@ -11,7 +11,7 @@ services:
       mail__from: ${EMAIL_ADDRESS}
       mail__options__service: ${EMAIL_SERVICE}
       mail__options__host: ${EMAIL_HOST}
-      mail__options__port: ${EMAIL_PORT}
+      mail__options__port: ${EMAIL_PORT:-587}
       mail__options__auth__user: ${EMAIL_USER}
       mail__options__auth__pass: ${EMAIL_PASSWORD}
     volumes:

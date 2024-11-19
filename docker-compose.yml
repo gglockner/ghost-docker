@@ -46,9 +46,3 @@ services:
       DOMAIN: ${URL}
       EMAIL: ${EMAIL_ADDRESS}
       LOG_FILE: /data/access.log
-
-volumes:
-  caddy_conf:
-    name: "caddy_config"
-  caddy_data:
-    name: "caddy_data"

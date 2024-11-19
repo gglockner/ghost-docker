@@ -14,7 +14,7 @@ has the following goals:
 This runs 3 services using the official Docker images:
 
 - Ghost software
-- Caddy, as a web proxy and static content
+- Caddy, as a web proxy and for static content
 - MySQL to power Ghost
 
 ## Instructions:
@@ -34,11 +34,11 @@ This runs 3 services using the official Docker images:
 | MYSQL\_ROOT\_PASSWORD | Yes | The root password for MySQL |
 | MYSQL\_USER\_PASSWORD | Yes | The password that ghost will use to connect to MySQL |
 | EMAIL\_ADDRESS | Yes | The email address for Ghost email and SSL verification |
-| EMAIL\_SERVICE | Yes | A name to describe the email service you use |
+| EMAIL\_SERVICE | Yes | A name to describe the email service (ex: Google) |
 | EMAIL\_HOST | Yes | Address of the email SMTP server |
 | EMAIL\_PORT | No | Port name for SMTP server (default: 587) |
 | EMAIL\_USER | Yes | User name for SMTP server |
-| EMAIL\_PASSWORD | Yes | Password name for SMTP server |
+| EMAIL\_PASSWORD | Yes | Account password for SMTP server |
 | HTTP\_PORT | No | Specify the port for HTTP (default: 80) |
 | HTTPS\_PORT | No | Specify the port for HTTPS (default: 443) |
 

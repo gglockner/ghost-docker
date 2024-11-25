@@ -41,7 +41,7 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
       - ./caddy/config:/config
       - ./caddy/data:/data
-      - ./content:/var/www
+      - ./content:/var/www:ro
     environment:
       DOMAIN: ${URL}
       EMAIL: ${EMAIL_ADDRESS}

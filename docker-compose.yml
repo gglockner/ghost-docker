@@ -41,10 +41,16 @@ services:
       - ${HTTPS_PORT:-443}:${HTTPS_PORT:-443}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./caddy/config:/config
-      - ./caddy/data:/data
+      - caddy_conf:/config
+      - caddy_data:/data
       - ./content:/var/www:ro
     environment:
       DOMAIN: ${URL}
       EMAIL: ${EMAIL_ADDRESS}
       LOG_FILE: /data/access.log
+
+volumes:
+  caddy_conf:
+    name: "caddy_config"
+  caddy_data:
+    name: "caddy_data"
